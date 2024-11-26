@@ -10,7 +10,6 @@ export default function App() {
     return (
         <>
             <Steps />
-            <Steps />
         </>
     );
 }
@@ -26,7 +25,7 @@ function Steps() {
         if (step < 3) setStep((s) => s + 1);
     }
 
-    return (-
+    return (
         <div>
             <button className="close" onClick={() => setIsOpen((is) => !is)}>
                 &times;
@@ -44,27 +43,37 @@ function Steps() {
                     </p>
 
                     <div className="buttons">
-                        <button
-                            style={{
-                                backgroundColor: "#7950f2",
-                                color: "#fff",
-                            }}
+                        <Button
+                            textColor="#fff"
+                            bgColor="#7950f2"
                             onClick={handlePrevious}
                         >
-                            Previous
-                        </button>
-                        <button
-                            style={{
-                                backgroundColor: "#7950f2",
-                                color: "#fff",
-                            }}
+                            <span>👈</span> Previous
+                        </Button>
+                        <Button
+                            textColor="#fff"
+                            bgColor="#7950f2"
                             onClick={handleNext}
                         >
-                            Next
-                        </button>
+                            Next <span>👉</span>
+                        </Button>
                     </div>
                 </div>
             )}
         </div>
+    );
+}
+
+function Button({ textColor, bgColor, onClick, children }) {
+    return (
+        <button
+            style={{
+                backgroundColor: bgColor,
+                color: textColor,
+            }}
+            onClick={onClick}
+        >
+            {children}
+        </button>
     );
 }
